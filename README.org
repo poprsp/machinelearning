@@ -1,0 +1,7 @@
+# Installation
+
+On Debian:
+
+```sh
+$ sudo apt-get install python3-sklearn
+```
