@@ -40,16 +40,19 @@ class Spiral:
         plt.tight_layout()
         plt.savefig(output)
 
-    def plot_confusion_matrices(self, output: str) -> None:
+    def plot_metrics(self, output: str) -> None:
         """
-        Retrieve the confusion matrix for the linear and NN classifiers.
+        Plot the accuracy and confusion metrics.
         """
         plt.figure(self.figure, figsize=(10, 10))
         self.figure += 1
 
         def plot(idx: int, label: str, classes: List) -> None:
             plt.subplot(2, 2, idx)
-            plt.xlabel(label)
+
+            accuracy = sklearn.metrics.accuracy_score(self.target_values,
+                                                      classes)
+            plt.xlabel("{} (accuracy: {:.3f})".format(label, accuracy))
 
             ticks = [0, 1, 2]
             labels = ["A", "B", "C"]
